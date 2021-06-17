@@ -1,0 +1,45 @@
+{% extends 'admin/master.html' %} {% block body %}
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Client</th>
+			<th scope="col">Email Address</th>
+			<th scope="col">Property Address</th>
+            <th scope="col">Lat</th>
+            <th scope="col">Lng</th>
+            <th scope="col">Date Requested</th>
+			<th scope="col">Drawing Request</th>
+            <th scope="col">Select Project</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		{% for job in available_jobs %}
+		<tr>
+			<td>{{job.id}}</td>
+            <td>{{job.firstname}}</td>
+			<td>{{job.stripe_email}}</td>
+			<td>{{job.address}}</td>
+			<td>{{job.latitude}}</td>
+			<td>{{job.longitude}}</td>
+			<td>{{job.date_created}}</td>
+			<td>{{job.drawing}}</td>
+			
+            <td>
+
+				<form action="/admin/jobs/" method="POST" >
+					<button class="btn btn-primary" type="submit" name="submit"  value="{{ job.id }}" >Select</button>
+				<form>
+
+			</td>
+		</tr>
+		{% endfor %}
+		
+
+	
+	</tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block checkmyroof %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>My Google Map</title>
+
+       <!-- Add Google Maps Via JavaScript-->
+          <script type="text/javascript" src="{{ url_for('static', filename='JavaScript/testmap.js') }}"></script>
+        
+          <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNT1Fptd2xsBhUkzHB8gAP7lbwFIUzUas&libraries=places"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  </head>
+
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+
+          <div id="map" class="container mt-5 mb-5"></div>
+        
+        
+          <!-- Add Styling for Google Maps-->
+          <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/testmap.css') }}"></link>
+        
+          
+        </div>
+        <div class="col-lg-6">
+
+            <!-- Address And Contact Details From -->
+
+          <div class="container mt-5 mb-4">
+            <form action="/checkmyroof" method="post" id="checkout_form">
+            
+              <h2 style="margin-bottom: 50px;">Find your property on the map</h2>
+
+
+                    <!-- Flash Flash
+                    {% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                        {% for message in messages %}
+                          <p>{{ message }}</p>
+                        {% endfor %}
+                      {% endif %}
+                    {% endwith %} -->
+            
+              
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="validationServer03">Search Address</label>
+                  <input name="address" type="text" class="form-control is-invalid" id="validationServer03" placeholder = "Please enter a location" aria-describedby="validationServer03Feedback" required>
+                  <div id="validationServer03Feedback" class="invalid-feedback">
+                  <div>
+                    <b>Coordinates:</b>
+                      <span id="coordinates" name="coordinates"></span>
+                  </div>
+                    Please place the marker on the roof you want a drawing for.
+                  </div>
+                  <input type="hidden" id="currentLatitude" name="currentLatitude" value="lat variable">
+                  <input type="hidden" id="currentLongitude" name="currentLongitude" value="lng variable"> 
+                </div>
+              </div>
+            
+              <div class="form-row">
+                <div class="col-md-6 order-mb-3">
+                  <label for="validationServer01">First name</label>
+                  <input name="firstname" type="text" class="form-control is-valid" id="searchInput" placeholder = "Enter name" required>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+              </div>
+            
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="validationServer02">Last name</label>
+                  <input name="secondname" type="text" class="form-control is-valid" id="validationServer02" placeholder = "Enter surname" required>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="validationServer02">Email Address</label>
+                  <input name="email" type="text" class="form-control is-valid" id="validationServer02" placeholder = "Enter email" required>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <select class="custom-select col-md-6 mb-3" name="drawing"required>
+                  <option value="">Choose a drawing type</option>
+                  <option value="2D">2D - £15</option>
+                  <option value="3D">3D - £30</option>
+                  <option value="Bespoke Drawing">Bespoke Drawing - £10 Deposit</option>
+                </select>
+                <div class="invalid-feedback">Example invalid custom select feedback</div>
+              </div>
+            
+    
+
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
+                  <label class="form-check-label" for="invalidCheck3">
+                    Agree to terms and conditions
+                  </label>
+
+                </div>
+              </div>
+
+              <div class="pt-3">
+                <button href="#" id="buy_now_btn"  class="btn btn-primary" type="submit" value="submit">Proceed to Payment</button>
+              </div>
+            
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Carrys out stripe paymnet page-->
+
+<script src="https://js.stripe.com/v3/"></script>
+<script src="{{ url_for('static', filename='JavaScript/script-ajax.js') }}"></script>
+
+
+
+</body>
+
+
+
+</html>
+
+{% endblock  %}

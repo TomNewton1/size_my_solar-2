@@ -1,0 +1,45 @@
+{% extends 'admin/master.html' %} {% block body %}
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Client</th>
+			<th scope="col">Email Address</th>
+			<th scope="col">Property Address</th>
+            <th scope="col">Lat</th>
+            <th scope="col">Lng</th>
+            <th scope="col">Drawing Request</th>
+            <th scope="col">Date Requested</th>
+            <th scope="col">Attach File Here</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			{% for job in selected_jobs %}
+		<tr>
+			<td>{{job.id}}</td>
+            <td>{{job.firstname}}</td>
+			<td>{{job.stripe_email}}</td>
+			<td>{{job.address}}</td>
+			<td>{{job.latitude}}</td>
+			<td>{{job.longitude}}</td>
+			<td>{{job.date_created}}</td>
+			<td>{{job.drawing}}</td>
+			
+            <td>
+                 <form method="POST" action="" enctype="multipart/form-data">
+                    <p><input type="file" name="file"></p>
+                    <p><button class="btn btn-success" type="submit" name="action" value="submit" value="{{ job.id }}"  >Submit</button></p>
+                    <button class="btn btn-danger" type="submit" name="action" value="delete" >Delete</button>
+                    <input type="hidden" name="client_id" value=" {{ job.id }}">
+                </form>
+
+            </td>
+		</tr>
+        {% endfor %}
+
+	</tbody>
+</table>
+
+{% endblock %}

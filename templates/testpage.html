@@ -1,0 +1,25 @@
+{% block title %}
+    This is a test page
+{% endblock %}
+
+{% block main %}
+
+<link rel="stylesheet" type = "text/css" href="{{url_for('static', filename='styles/testmap.css')}}">
+    
+
+<div id="test">This is some test text</div>
+
+
+<!-- Link to js-->
+<script type="text/javascript" src="{{ url_for('static', filename='JavaScript/testpage.js') }}"></script>
+
+
+<form action="/testpage" method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Enter Some Text</label>
+    <input type="testtext" class="form-control" id="javascript_data"  placeholder="Enter test text">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}

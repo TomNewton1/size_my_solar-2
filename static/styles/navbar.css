@@ -1,0 +1,19 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.btn {
+    display: inline-block;
+  }
+  
+  .btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .btn-grey {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
