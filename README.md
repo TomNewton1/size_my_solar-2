@@ -1,3 +1,7 @@
+## SizeMySolar
+
+[![](static/size_my_solar_gif.gif)](https://www.youtube.com/watch?v=I9BCivngYjY&ab_channel=TomasNewton)
+
 #### Description:
 A website where visitors can purchase a Solar Photovoltaic drawing/quotation for their property. Users that visit the website are able to browse available drawing options, pinpoint their property on a satellite map, enter their contact and address details, select the drawing/design/quotation they would like and purchase the drawing through Stripe payment. Once a client has made a purchase, Admin users ("designers") are able to login and view available job listings. Individual admin users can then select the jobs they would like to complete and once completed (pdf quotation/drawing) send them to the client via an automated email. 
 
